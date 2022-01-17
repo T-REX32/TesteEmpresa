@@ -69,3 +69,4 @@ while True:
 for k, v in dados.items():
     print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
     print(f"  -> {k} tem o valor {v}.")
+    print("Cadastro finalizado.")
