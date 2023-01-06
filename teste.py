@@ -1,6 +1,6 @@
 from datetime import datetime
 dados = dict()
-
+soma = 0
 while True:
 
     dados['nome'] = str(input("Nome: "))
@@ -10,9 +10,11 @@ while True:
     dados['idade'] = datetime.now().year - nasc
 
     dados['sexo'] = str(input("Sexo: "))
+    while dados['sexo'] not in "MmFf":
+        dados['sexo'] = str(input("Sexo (M-masculino ou F-feminino): "))
 
     dados['telefone'] = int(input("Telefone: "))
-
+    
     dados['email'] = input("Email/Gmail: ")
 
     dados['proprietário'] = str(input("Proprietário: "))
@@ -23,50 +25,40 @@ while True:
 
     dados['endereço'] = input("Endereço: ")
 
-    dados['tipo_de_despesa'] = str(input("Qual o tipo de despesa? (água, esgoto, luz, gás e condomínio): "))
+    dados['despesas_da_água'] = float(input("Despesas Água: "))
 
-    if dados['tipo_de_despesa'] == "água":
-        dados['despesas_da_água'] = float(input("Despesas da água: "))
+    dados['despesas_do_esgoto'] = float(input("Despesas do esgoto: "))
 
-    elif dados['tipo_de_despesa'] == "esgoto":
-        dados['despesas_do_esgoto'] = float(input("Despesas do esgoto: "))
-
-    elif dados['tipo_de_despesa'] == "luz":
-        dados['despesas_da_luz'] = float(input("Despesas da luz: "))
+    dados['despesas_da_luz'] = float(input("Despesas da luz: "))
+        
+    dados['despesas_do_gás'] = float(input("Despesas do gás: "))
     
-    elif dados['tipo_de_despesa'] == "gás":
-        dados['despesas_do_gás'] = float(input("Despesas do gás: "))
+    dados['despesas_do_condomínio'] = float(input("Despesas do condomínio: "))
 
-    elif dados['tipo_de_despesa'] == "condomínio":
-        dados['despesas_do_condomínio'] = float(input("Despesas do condomínio: "))
+    soma = dados['despesas_da_água'] + dados['despesas_do_esgoto'] + dados['despesas_da_luz'] + dados['despesas_do_gás'] + dados['despesas_do_condomínio']
+    print(f"R${soma} para pagar.")
 
     dados['editar_despesa'] = str(input("Deseja editar suas despesas? "))
 
     if dados['editar_despesa'] in "Ss":
-        dados['tipo_de_despesa'] = str(input("Qual o tipo de despesa? (água, esgoto, luz, gás e condomínio): "))
 
-    if dados['tipo_de_despesa'] == "água":
-        dados['despesas_da_água'] = float(input("Despesas da água: "))
+        dados['despesas_da_água'] = float(input("Despesas Água: "))
 
-    elif dados['tipo_de_despesa'] == "esgoto":
         dados['despesas_do_esgoto'] = float(input("Despesas do esgoto: "))
 
-    elif dados['tipo_de_despesa'] == "luz":
         dados['despesas_da_luz'] = float(input("Despesas da luz: "))
-    
-    elif dados['tipo_de_despesa'] == "gás":
+            
         dados['despesas_do_gás'] = float(input("Despesas do gás: "))
-
-    elif dados['tipo_de_despesa'] == "condomínio":
+        
         dados['despesas_do_condomínio'] = float(input("Despesas do condomínio: "))
-    
-    dados['vencimento_fatura'] = int(input("Escolha o dia do vencimento de sua fatura (quantos dias para o vencimento): "))
 
-    dados['finalizar'] = str(input("Deseja continuar? [S/N]: "))
-    if dados['finalizar'] not in "Ss":
-        break
+        soma = dados['despesas_da_água'] + dados['despesas_do_esgoto'] + dados['despesas_da_luz'] + dados['despesas_do_gás'] + dados['despesas_do_condomínio']
+        print(f"R${soma} para pagar.")
+
+    dados['vencimento_fatura'] = int(input("Escolha o dia do vencimento de sua fatura (quantos dias para o vencimento): "))
+    break
     
 for k, v in dados.items():
-    print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
+    print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
     print(f"  -> {k} tem o valor {v}.")
-    print("Cadastro finalizado.")
+print("Cadastro finalizado.")
